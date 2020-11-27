@@ -32,14 +32,14 @@ def save_vector_as_img(vector,filename):
 	img = img.detach().numpy() * 255
 	img = img.astype(np.uint8)
 	img = Image.fromarray(img)
-	img.save('test-data/' + filename)
+	img.save('output/' + filename)
 
 def present(index,net,note):
 	ppm = Image.open('images/{}.jpg'.format(str(index)))
 	inp = preprocess(ppm).unsqueeze(0)
 	output = net(inp)
 	show_vector_as_img(output)
-	# save_vector_as_img(output,'output-%s.jpg' % note)
+	save_vector_as_img(output,'output-%s.jpg' % note)
 
 	# pgm = Image.open('depths/{}.jpg'.format(str(index)))
 	# tar = tarprocess(pgm).unsqueeze(0)
